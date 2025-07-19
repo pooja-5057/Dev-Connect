@@ -53,7 +53,7 @@
 
 import Image from 'next/image'
 import React from 'react'
-import Link from 'next/link' // ✅ Add this line
+import Link from 'next/link' 
 
 const ProfileCard = () => {
     const userId = "test" 

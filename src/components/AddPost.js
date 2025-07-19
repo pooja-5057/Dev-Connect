@@ -244,9 +244,10 @@ import React, { useState, useEffect } from 'react';
 
 const AddPost = () => {
   const [desc, setDesc] = useState('');
-  const [media, setMedia] = useState(null); // base64 file
-  const [mediaType, setMediaType] = useState(null); // image or video
+  const [media, setMedia] = useState(null);
+  const [mediaType, setMediaType] = useState(null);
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
   const [user, setUser] = useState(null);
 
   // Load user and posts on mount
@@ -297,6 +298,11 @@ const AddPost = () => {
     setMediaType(null);
   };
 
+  const handleCommentSubmit = () => {
+    if (!commentInput.trim()) return;
+    setComments([...comments, commentInput]);
+    setCommentInput('');
+  };
   // Handle like
   const handleLike = (id) => {
     const updatedPosts = posts.map((post) =>
@@ -425,7 +431,6 @@ const AddPost = () => {
                   </div>
                 </div>
               </div>
-
               {/* Comment Input */}
               <div className="mt-2">
                 <input
@@ -452,7 +457,9 @@ const AddPost = () => {
             </div>
           ))
         )}
+
       </div>
+
     </div>
   );
 };
